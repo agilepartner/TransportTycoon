@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace TransportTycoon
 {
@@ -15,7 +14,7 @@ namespace TransportTycoon
 
         public void Deliver()
         {
-            CurrentTime = new TimeSpan(5, 0, 0);
+            CurrentTime = TimeSpan.FromHours(5);
         }
     }
 }
