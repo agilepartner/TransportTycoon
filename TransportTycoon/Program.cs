@@ -8,8 +8,7 @@ namespace TransportTycoon
         {
             var destinations = args[0];
 
-            var world = new World(destinations.Select(x => x.ToString()));
-
+            var solution = new Solution(destinations.Select(x => x.ToString()));
         }
     }
 }

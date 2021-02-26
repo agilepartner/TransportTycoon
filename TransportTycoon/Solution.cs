@@ -6,7 +6,6 @@ namespace TransportTycoon
 {
     public class Solution
     {
-
         public Solution(IEnumerable<string> destinations)
         {
 

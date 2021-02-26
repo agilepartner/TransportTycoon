@@ -21,7 +21,7 @@ namespace TransportTycoon.Tests
             var solution = new Solution(destinations.Select(x => x.ToString()));
 
             // Act
-            solution.Deliver();
+            //solution.Deliver();
 
             // Assert
             //Assert.Equal(TimeSpan.FromHours(durationTimeInHours), solution.CurrentTime);
