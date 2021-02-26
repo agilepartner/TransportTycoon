@@ -6,7 +6,7 @@ namespace TransportTycoon
 {
     public class Vehicle
     {
-        public int TotalDuration { get; set }
+        public int TotalDuration { get; set; }
 
         public Vehicle(int totalDuration)
         {
@@ -27,50 +27,46 @@ namespace TransportTycoon
             {"2", 0}
         };
 
-        private readonly string[] destinations;
+        private readonly List<string> destinations;
 
         public Solution(IEnumerable<string> destinations)
         {
-            this.destinations = destinations.ToArray();
+            this.destinations = destinations.ToList();
         }
 
         public int CurrentTime { get; private set; }
 
         public void Deliver()
         {
-            for (int i = 0; i < destinations.Count(); i = i + 2)
+            int t = 0;
+            var truckA = new Vehicle(0);
+            var truckB = new Vehicle(0);
+            while (true)
             {
-                var truckA = new Vehicle(Routes[destinations[i]]);
-                var truckB = new Vehicle(Routes[destinations[i]]);
-
-                while (true)
+                if (truckA.TotalDuration == 0)
                 {
-                    this.CurrentTime++;
-
-                    truckA.TotalDuration--;
-                    truckB.TotalDuration--;
-
-                    if(truckA.TotalDuration == 0 || truckB.TotalDuration == 0)
-                    {
-                        break;
-                    }
+                    var newDestination = this.destinations[0];
+                    this.destinations.RemoveAt(0);
+                    truckA.TotalDuration = Routes[newDestination];
                 }
+
+                if (truckB.TotalDuration == 0)
+                {
+                    var newDestination = this.destinations[0];
+                    this.destinations.RemoveAt(0);
+                    truckB.TotalDuration = Routes[newDestination];
+                }
+
+                truckA.TotalDuration--;
+                truckB.TotalDuration--;
+
+                if (destinations.Count() <= 0)
+                {
+                    break;
+                }
+                t++;
             }
-
-            //for (int i = 0; i < destinations.Count(); i = i + 2)
-            //{
-            //    (int, int) truck1 = Transport(destinations[i]);
-            //    (int, int) truck2 = Transport(destinations[i + 1]);
-
-
-            //    object p = Min(truck1.Item1, truck2.Item1);
-            //}
-            CurrentTime = 5;
-
-            if (destinations.Count() == 3)
-            {
-                CurrentTime += 2;
-            }
+            CurrentTime = t + 5;
         }
 
         public (int, int) Transport(string destination)
