@@ -8,9 +8,9 @@ namespace TransportTycoon.Tests
     {
         [Theory]
         [InlineData("A", 5)]
-        //[InlineData("AB", 5)]
-        //[InlineData("BB", 5)]
-        //[InlineData("ABB", 7)]
+        [InlineData("AB", 5)]
+        [InlineData("BB", 5)]
+        [InlineData("ABB", 7)]
         //[InlineData("AABABBAB", )]
         //[InlineData("AAAABBBB", )]
         //[InlineData("BBBBAAAA", )]
