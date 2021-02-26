@@ -10,5 +10,12 @@ namespace TransportTycoon
         {
 
         }
+
+        public TimeSpan CurrentTime { get; private set; }
+
+        public void Deliver()
+        {
+            CurrentTime = new TimeSpan(5, 0, 0);
+        }
     }
 }
