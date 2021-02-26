@@ -11,7 +11,7 @@ namespace TransportTycoon.Tests
         [InlineData("AB", 5)]
         [InlineData("BB", 5)]
         [InlineData("ABB", 7)]
-        //[InlineData("AABABBAB", )]
+        [InlineData("ABBA", 15)]
         //[InlineData("AAAABBBB", )]
         //[InlineData("BBBBAAAA", )]
         //[InlineData("ABBBABAAABBB", )]
@@ -24,7 +24,7 @@ namespace TransportTycoon.Tests
             solution.Deliver();
 
             // Assert
-            Assert.Equal(TimeSpan.FromHours(durationTimeInHours), solution.CurrentTime);
+            Assert.Equal(durationTimeInHours, solution.CurrentTime);
         }
     }
 }
